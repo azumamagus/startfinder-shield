@@ -1,0 +1,113 @@
+@inject HttpClient Http
+
+@if (!string.IsNullOrEmpty(erro))
+{
+    <div class="medieval-modal medieval-modal-loading">
+        <p style="color: darkred;">Erro ao carregar condições: @erro</p>
+    </div>
+}
+else if (categorias is null)
+{
+    <div class="medieval-modal medieval-modal-loading">
+        <p>Carregando condições...</p>
+    </div>
+}
+else
+{
+    <div class="medieval-modal condicoes-modal">
+        <div class="condicoes-flex">
+            <aside class="condicoes-categorias">
+                <h2 class="medieval-title">Categorias</h2>
+                <ul>
+                    @foreach (var cat in categorias)
+                    {
+                        <li class="@(cat == categoriaSelecionada ? "active" : "")"
+                            @onclick="() => SelecionarCategoriaAsync(cat)">
+                            @cat.Categoria
+                        </li>
+                    }
+                </ul>
+            </aside>
+            <main class="condicoes-main">
+                <h3 class="medieval-title">@categoriaSelecionada?.Categoria</h3>
+                <div class="condicoes-list">
+                    @if (categoriaSelecionada != null)
+                    {
+                        foreach (var cond in categoriaSelecionada.CondicoesDetalhadas)
+                        {
+                            <div class="condicao-card">
+                                <span class="condicao-nome medieval-title">@cond.Nome</span>
+                                <span class="condicao-desc medieval-desc">@cond.Descricao</span>
+                            </div>
+                        }
+                    }
+                </div>
+            </main>
+        </div>
+        <button class="medieval-close-btn mt-3" @onclick="OnClose">Fechar</button>
+    </div>
+}
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private List<CondicaoCategoria>? categorias;
+    private CondicaoCategoria? categoriaSelecionada;
+    private string? erro;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CarregarCategoriasAsync();
+    }
+
+    private async Task CarregarCategoriasAsync()
+    {
+        try
+        {
+            var json = await Http.GetStringAsync("condicoes.json");
+            categorias = new List<CondicaoCategoria>();
+            using var doc = System.Text.Json.JsonDocument.Parse(json);
+            foreach (var cat in doc.RootElement.GetProperty("condicoes").EnumerateArray())
+            {
+                var novaCat = new CondicaoCategoria
+                {
+                    Categoria = cat.GetProperty("categoria").GetString() ?? string.Empty,
+                    CondicoesDetalhadas = new List<CondicaoDetalhada>()
+                };
+                foreach (var cond in cat.GetProperty("condicoes_detalhadas").EnumerateArray())
+                {
+                    novaCat.CondicoesDetalhadas.Add(new CondicaoDetalhada
+                    {
+                        Nome = cond.GetProperty("nome").GetString() ?? string.Empty,
+                        Descricao = cond.GetProperty("descricao").GetString() ?? string.Empty
+                    });
+                }
+                categorias.Add(novaCat);
+            }
+            categoriaSelecionada = categorias.FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            erro = ex.Message;
+        }
+        StateHasChanged();
+    }
+
+    private async Task SelecionarCategoriaAsync(CondicaoCategoria cat)
+    {
+        await CarregarCategoriasAsync();
+        categoriaSelecionada = categorias?.FirstOrDefault(c => c.Categoria == cat.Categoria);
+        StateHasChanged();
+    }
+
+    public class CondicaoCategoria
+    {
+        public string Categoria { get; set; } = "";
+        public List<CondicaoDetalhada> CondicoesDetalhadas { get; set; } = new();
+    }
+    public class CondicaoDetalhada
+    {
+        public string Nome { get; set; } = "";
+        public string Descricao { get; set; } = "";
+    }
+}
