@@ -1,23 +1,25 @@
 @inject HttpClient Http
 
+<link href="css/condicoes-futurista.css" rel="stylesheet" />
+
 @if (!string.IsNullOrEmpty(erro))
 {
-    <div class="medieval-modal medieval-modal-loading">
-        <p style="color: darkred;">Erro ao carregar condições: @erro</p>
+    <div class="condicoes-modal">
+        <p style="color: #ff0055;">Erro ao carregar condiÃ§Ãµes: @erro</p>
     </div>
 }
 else if (categorias is null)
 {
-    <div class="medieval-modal medieval-modal-loading">
-        <p>Carregando condições...</p>
+    <div class="condicoes-modal">
+        <p style="color: #00ffe7;">Carregando condiÃ§Ãµes...</p>
     </div>
 }
 else
 {
-    <div class="medieval-modal condicoes-modal">
+    <div class="condicoes-modal">
         <div class="condicoes-flex">
             <aside class="condicoes-categorias">
-                <h2 class="medieval-title">Categorias</h2>
+                <h2>Categorias</h2>
                 <ul>
                     @foreach (var cat in categorias)
                     {
@@ -29,15 +31,15 @@ else
                 </ul>
             </aside>
             <main class="condicoes-main">
-                <h3 class="medieval-title">@categoriaSelecionada?.Categoria</h3>
+                <h3>@categoriaSelecionada?.Categoria</h3>
                 <div class="condicoes-list">
                     @if (categoriaSelecionada != null)
                     {
                         foreach (var cond in categoriaSelecionada.CondicoesDetalhadas)
                         {
                             <div class="condicao-card">
-                                <span class="condicao-nome medieval-title">@cond.Nome</span>
-                                <span class="condicao-desc medieval-desc">@cond.Descricao</span>
+                                <span class="condicao-nome">@cond.Nome</span>
+                                <span class="condicao-desc">@cond.Descricao</span>
                             </div>
                         }
                     }
