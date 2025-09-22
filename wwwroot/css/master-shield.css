@@ -1,0 +1,107 @@
+/* Estilo para o Escudo do Mestre Starfinder */
+.shield-layout {
+  display: flex;
+  min-height: 60vh;
+  background: linear-gradient(120deg, #1a2233 60%, #2e3a4f 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #000a  ;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 900px;
+}
+.shield-sidebar {
+  background: #232c3d;
+  color: #fff;
+  min-width: 180px;
+  padding: 1.5rem 1rem;
+  border-right: 2px solid #2e3a4f;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.shield-sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  color: #00bfff;
+}
+.shield-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.shield-sidebar li {
+  padding: 0.5rem 0.7rem;
+  margin-bottom: 0.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.shield-sidebar li.active, .shield-sidebar li:hover {
+  background: #00bfff33;
+  color: #00bfff;
+}
+.shield-main {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  color: #e0e6f0;
+  display: flex;
+  flex-direction: column;
+}
+.shield-main h3 {
+  color: #00bfff;
+  margin-bottom: 1.2rem;
+  font-size: 1.3rem;
+}
+.condicoes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+.condicao-card {
+  background: #232c3d;
+  border: 1.5px solid #00bfff55;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px #0004;
+  transition: transform 0.15s;
+}
+.condicao-card:hover {
+  transform: scale(1.03);
+  border-color: #00bfff;
+}
+.condicao-card strong {
+  color: #00bfff;
+  font-size: 1.1rem;
+}
+@media (max-width: 700px) {
+  .shield-layout {
+    flex-direction: column;
+    max-width: 98vw;
+  }
+  .shield-sidebar {
+    flex-direction: row;
+    min-width: unset;
+    border-right: none;
+    border-bottom: 2px solid #2e3a4f;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    overflow-x: auto;
+  }
+  .shield-sidebar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .shield-sidebar li {
+    margin-bottom: 0;
+    min-width: 120px;
+    text-align: center;
+  }
+  .shield-main {
+    padding: 1rem 0.5rem;
+  }
+  .condicoes-list {
+    grid-template-columns: 1fr;
+  }
+}

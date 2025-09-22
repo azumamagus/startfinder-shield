@@ -1,0 +1,62 @@
+{
+  "condicoes": [
+    {
+      "categoria": "Combate e Ação",
+      "condicoes_detalhadas": [
+        {"nome": "Apressado (Quickened)","descricao": "Concede uma ação extra por turno."},
+        {"nome": "Desacelerado (Slowed)","descricao": "Faz com que o personagem perca ações por turno."},
+        {"nome": "Imobilizado (Immobilized)","descricao": "Impede que o personagem se mova."},
+        {"nome": "Lento (Clumsy)","descricao": "Movimentos tornam-se desajeitados e imprecisos, aplicando uma penalidade."},
+        {"nome": "Paralisado (Paralyzed)","descricao": "O corpo do personagem congela no lugar."},
+        {"nome": "Restrito (Restrained)","descricao": "O personagem é amarrado ou contido por uma criatura, limitando muito seus movimentos."},
+        {"nome": "Surpreso (Stunned)","descricao": "O personagem não pode usar ações."},
+        {"nome": "Prendido (Grabbed)","descricao": "O personagem é segurado por uma criatura, objeto ou magia, ficando no lugar."}
+      ]
+    },
+    {
+      "categoria": "Percepção e Sentidos",
+      "condicoes_detalhadas": [
+        {"nome": "Atordoado (Dazzled)","descricao": "Os olhos do personagem estão superestimulados, dificultando a visão."},
+        {"nome": "Cego (Blinded)","descricao": "O personagem não consegue ver."},
+        {"nome": "Escondido (Hidden)","descricao": "Uma criatura que está escondida sabe a sua localização, mas não consegue vê-lo."},
+        {"nome": "Fascinado (Fascinated)","descricao": "O personagem é compelido a focar a atenção em algo, distraindo-o."},
+        {"nome": "Invisível (Invisible)","descricao": "Criaturas não conseguem ver o personagem."},
+        {"nome": "Observado (Observed)","descricao": "O personagem está à vista de todos."},
+        {"nome": "Surdo (Deafened)","descricao": "O personagem não consegue ouvir."},
+        {"nome": "Não detectado (Undetected)","descricao": "Uma criatura não sabe a localização do personagem."},
+        {"nome": "Não percebido (Unnoticed)","descricao": "Uma criatura não tem a menor ideia de que o personagem está presente."}
+      ]
+    },
+    {
+      "categoria": "Dano e Vitalidade",
+      "condicoes_detalhadas": [
+        {"nome": "Com dano persistente (Persistent Damage)","descricao": "O personagem continua recebendo dano a cada rodada."},
+        {"nome": "Drenado (Drained)","descricao": "A vitalidade e energia do personagem são esgotadas."},
+        {"nome": "Morrendo (Dying)","descricao": "O personagem está à beira da morte, inconsciente e com sangramento. Se o valor da condição chegar a 4, o personagem morre."},
+        {"nome": "Quebrado (Broken)","descricao": "Uma condição para objetos que sofreram dano suficiente."},
+        {"nome": "Ferido (Wounded)","descricao": "O personagem foi trazido de volta da beira da morte, mas ainda não está totalmente recuperado."}
+      ]
+    },
+    {
+      "categoria": "Efeito Mental e Social",
+      "condicoes_detalhadas": [
+        {"nome": "Confuso (Confused)","descricao": "O personagem ataca de forma aleatória."},
+        {"nome": "Controlado (Controlled)","descricao": "O personagem tem sua vontade subvertida por um comando ou magia."},
+        {"nome": "Enfraquecido (Enfeebled)","descricao": "O personagem fica fisicamente mais fraco."},
+        {"nome": "Estupefato (Stupefied)","descricao": "O personagem tem problemas para acessar suas faculdades mentais."},
+        {"nome": "Hostil (Hostile)","descricao": "Um NPC com esta condição deseja ferir o personagem."},
+        {"nome": "Indiferente (Indifferent)","descricao": "Um NPC não tem uma opinião forte sobre o personagem."},
+        {"nome": "Inconsciente (Unconscious)","descricao": "O personagem está dormindo ou nocauteado."},
+        {"nome": "Não amigável (Unfriendly)","descricao": "Um NPC não gosta do personagem."}
+      ]
+    },
+    {
+      "categoria": "Diversas",
+      "condicoes_detalhadas": [
+        {"nome": "Enjoado (Sickened)","descricao": "O personagem se sente mal do estômago."},
+        {"nome": "Fatigado (Fatigued)","descricao": "O personagem está cansado."},
+        {"nome": "Sobrecarregado (Encumbered)","descricao": "O personagem carrega mais peso do que consegue suportar."}
+      ]
+    }
+  ]
+}

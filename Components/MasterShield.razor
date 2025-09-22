@@ -1,0 +1,92 @@
+@page "/condicoes"
+@inject HttpClient Http
+@using System.Text.Json
+
+@code {
+    private class CondicaoCategoria
+    {
+        public string Categoria { get; set; } = string.Empty;
+        public List<CondicaoDetalhada> CondicoesDetalhadas { get; set; } = new();
+    }
+
+    private class CondicaoDetalhada
+    {
+        public string Nome { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
+    }
+
+    private List<CondicaoCategoria> categorias = new();
+    private CondicaoCategoria? categoriaSelecionada;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // 🔹 Arquivo "wwwroot/condicoes.json"
+            var json = await Http.GetStringAsync("condicoes.json");
+
+            using var doc = JsonDocument.Parse(json);
+            categorias = new List<CondicaoCategoria>();
+
+            foreach (var cat in doc.RootElement.GetProperty("condicoes").EnumerateArray())
+            {
+                var novaCat = new CondicaoCategoria
+                {
+                    Categoria = cat.GetProperty("categoria").GetString() ?? string.Empty,
+                    CondicoesDetalhadas = new List<CondicaoDetalhada>()
+                };
+
+                foreach (var cond in cat.GetProperty("condicoes_detalhadas").EnumerateArray())
+                {
+                    novaCat.CondicoesDetalhadas.Add(new CondicaoDetalhada
+                    {
+                        Nome = cond.GetProperty("nome").GetString() ?? string.Empty,
+                        Descricao = cond.GetProperty("descricao").GetString() ?? string.Empty
+                    });
+                }
+
+                categorias.Add(novaCat);
+            }
+
+            categoriaSelecionada = categorias.FirstOrDefault();
+        }
+        catch
+        {
+            // erro ao carregar json
+        }
+    }
+
+    void SelecionarCategoria(CondicaoCategoria cat) => categoriaSelecionada = cat;
+}
+
+<div class="shield-layout">
+    <aside class="shield-sidebar">
+        <h2>Condições</h2>
+        <ul>
+            @foreach (var cat in categorias)
+            {
+                <li class="@(cat == categoriaSelecionada ? "active" : "")"
+                    @onclick="() => SelecionarCategoria(cat)">
+                    @cat.Categoria
+                </li>
+            }
+        </ul>
+    </aside>
+    <main class="shield-main">
+        <h3>@categoriaSelecionada?.Categoria</h3>
+        <div class="condicoes-list">
+            @if (categoriaSelecionada != null)
+            {
+                foreach (var cond in categoriaSelecionada.CondicoesDetalhadas)
+                {
+                    <div class="condicao-card">
+                        <strong>@cond.Nome</strong>
+                        <p>@cond.Descricao</p>
+                    </div>
+                }
+            }
+        </div>
+    </main>
+</div>
+
+<link href="css/master-shield.css" rel="stylesheet" />
