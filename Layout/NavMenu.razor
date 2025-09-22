@@ -37,7 +37,9 @@
 @if (showConditions)
 {
     <div class="medieval-modal-backdrop" @onclick="HideConditions">
-        <CondicoesDeJogo OnClose="HideConditions" />
+        <div class="condicoes-modal" @onclick:stopPropagation>
+            <CondicoesDeJogo OnClose="HideConditions" />
+        </div>
     </div>
 }
 
