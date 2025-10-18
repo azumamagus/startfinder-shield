@@ -48,6 +48,18 @@ jobs:
                 echo "✅ Base href configured for GitHub Pages"
                 cat docs/wwwroot/index.html | grep "base href"
 
+            - name: Add .nojekyll file (disable Jekyll processing)
+              run: touch docs/wwwroot/.nojekyll
+
+            - name: Verify 404.html exists
+              run: |
+                if [ -f "docs/wwwroot/404.html" ]; then
+                  echo "✅ 404.html found for SPA routing"
+                  cat docs/wwwroot/404.html | head -10
+                else
+                  echo "❌ WARNING: 404.html not found!"
+                fi
+
             - name: Setup Pages
               uses: actions/configure-pages@v4
 
