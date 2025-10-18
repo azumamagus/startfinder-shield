@@ -1,0 +1,162 @@
+@page "/acoes-combate"
+@inject HttpClient Http
+@using System.Text.Json
+
+<link href="css/acoes-combate.css" rel="stylesheet" />
+
+@if (!string.IsNullOrEmpty(erro))
+{
+    <div class="acoes-container">
+        <div class="acoes-header">
+            <h1 class="acoes-title">Erro ao Carregar</h1>
+            <p style="color: #ff00ff; text-align: center;">@erro</p>
+        </div>
+    </div>
+}
+else if (categorias is null)
+{
+    <div class="acoes-container">
+        <div class="acoes-header">
+            <h1 class="acoes-title">Carregando...</h1>
+            <p class="acoes-subtitle">Preparando dados de combate</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="acoes-container">
+        <div class="acoes-header">
+            <h1 class="acoes-title">Ações em Combate</h1>
+            <p class="acoes-subtitle">Guia Completo de Ações Starfinder</p>
+        </div>
+
+        <div class="search-container">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text"
+                   class="search-input"
+                   placeholder="Buscar ações por nome ou descrição..."
+                   @bind="search"
+                   @bind:event="oninput" />
+        </div>
+
+        @foreach (var categoria in categorias)
+        {
+            var acoesFiltered = categoria.AcoesDetalhadas
+                .Where(a => string.IsNullOrWhiteSpace(search) ||
+                           a.Nome.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                           a.Descricao.Contains(search, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            @if (acoesFiltered.Any())
+            {
+                <div class="categoria-section">
+                    <h2 class="categoria-title">@categoria.Categoria</h2>
+
+                    <div class="acoes-grid">
+                        @foreach (var acao in acoesFiltered)
+                        {
+                            <div class="acao-card">
+                                <div class="acao-card-header">
+                                    <div class="acao-icon">
+                                        @GetIconForCategory(categoria.Categoria)
+                                    </div>
+                                    <h3 class="acao-nome">@acao.Nome</h3>
+                                </div>
+                                <p class="acao-descricao">@acao.Descricao</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+
+        @if (!categorias.Any(c => c.AcoesDetalhadas.Any(a =>
+            string.IsNullOrWhiteSpace(search) ||
+            a.Nome.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+            a.Descricao.Contains(search, StringComparison.OrdinalIgnoreCase))))
+        {
+            <div class="no-results">
+                <i class="bi bi-search" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                <p>Nenhuma ação encontrada para "<strong>@search</strong>"</p>
+            </div>
+        }
+
+        <button class="back-to-top" @onclick="ScrollToTop" title="Voltar ao topo">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+    </div>
+}
+
+@code {
+    private List<AcaoCategoria>? categorias;
+    private string? erro;
+    private string search = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CarregarCategoriasAsync();
+    }
+
+    private async Task CarregarCategoriasAsync()
+    {
+        try
+        {
+            var json = await Http.GetStringAsync("acoes-combate.json");
+            categorias = new List<AcaoCategoria>();
+            using var doc = JsonDocument.Parse(json);
+            foreach (var cat in doc.RootElement.GetProperty("acoes").EnumerateArray())
+            {
+                var novaCat = new AcaoCategoria
+                {
+                    Categoria = cat.GetProperty("categoria").GetString() ?? string.Empty,
+                    AcoesDetalhadas = new List<AcaoDetalhada>()
+                };
+                foreach (var acao in cat.GetProperty("acoes_detalhadas").EnumerateArray())
+                {
+                    novaCat.AcoesDetalhadas.Add(new AcaoDetalhada
+                    {
+                        Nome = acao.GetProperty("nome").GetString() ?? string.Empty,
+                        Descricao = acao.GetProperty("descricao").GetString() ?? string.Empty
+                    });
+                }
+                categorias.Add(novaCat);
+            }
+        }
+        catch (Exception ex)
+        {
+            erro = ex.Message;
+        }
+    }
+
+    private string GetIconForCategory(string categoria)
+    {
+        return categoria switch
+        {
+            "Ação Padrão" => "⚔️",
+            "Ação Rápida" => "⚡",
+            "Ação Completa" => "💥",
+            "Ação de Movimento" => "🏃",
+            "Reação" => "🛡️",
+            "Outras Ações" => "⚙️",
+            _ => "✨"
+        };
+    }
+
+    private async Task ScrollToTop()
+    {
+        // Scroll suave para o topo
+        await Task.CompletedTask;
+    }
+
+    public class AcaoCategoria
+    {
+        public string Categoria { get; set; } = string.Empty;
+        public List<AcaoDetalhada> AcoesDetalhadas { get; set; } = new();
+    }
+
+    public class AcaoDetalhada
+    {
+        public string Nome { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
+    }
+}

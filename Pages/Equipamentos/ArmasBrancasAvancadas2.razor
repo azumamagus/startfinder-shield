@@ -2,50 +2,91 @@
 @using System.Text.Json
 @using Starfinder.Shield.Models
 
-<PageTitle>Armas Brancas Avan�adas 2</PageTitle>
-<link href="css/condicoes-futurista.css" rel="stylesheet" />
+<PageTitle>Armas Brancas Avançadas (2) - Starfinder Shield</PageTitle>
+<link href="css/equipamentos.css" rel="stylesheet" />
 
-<h3>ARMAS BRANCAS AVAN�ADAS (2)</h3>
+<div class="equipamentos-container">
+    <div class="equipamentos-header">
+        <h1 class="equipamentos-title">⚔️ Armas Brancas Avançadas (2)</h1>
+        <p class="equipamentos-subtitle">Arsenal Especializado de Elite</p>
+    </div>
 
-@if (items is null)
-{
-    <p>Carregando...</p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>GRUPO</th>
-                <th>NOME</th>
-                <th>N�VEL</th>
-                <th>PRE�O</th>
-                <th>DANO</th>
-                <th>CR�TICO</th>
-                <th>VOLUME</th>
-                <th>ESPECIAL</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var it in items)
-            {
-                <tr>
-                    <td>@it.Grupo</td>
-                    <td>@it.Nome</td>
-                    <td>@it.Nivel</td>
-                    <td>@it.Preco</td>
-                    <td>@it.Dano</td>
-                    <td>@it.Critico</td>
-                    <td>@it.Volume</td>
-                    <td>@it.Especial</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+    <div class="search-container-equipamentos">
+        <i class="bi bi-search search-icon-equipamentos"></i>
+        <input type="text"
+               class="search-input-equipamentos"
+               placeholder="Buscar armas por nome, grupo ou característica..."
+               @bind="search"
+               @bind:event="oninput" />
+    </div>
+
+    @if (items is null)
+    {
+        <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Carregando arsenal...</p>
+        </div>
+    }
+    else
+    {
+        var filteredItems = items.Where(i =>
+            string.IsNullOrWhiteSpace(search) ||
+            i.Nome.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+            i.Grupo.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+            i.Especial.Contains(search, StringComparison.OrdinalIgnoreCase)
+        ).ToList();
+
+        @if (filteredItems.Any())
+        {
+            <div class="table-wrapper">
+                <table class="equipamentos-table">
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Nome da Arma</th>
+                            <th>Nível</th>
+                            <th>Preço</th>
+                            <th>Dano</th>
+                            <th>Crítico</th>
+                            <th>Volume</th>
+                            <th>Especial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in filteredItems)
+                        {
+                            <tr>
+                                <td>@item.Grupo</td>
+                                <td>@item.Nome</td>
+                                <td><span class="nivel-badge">@item.Nivel</span></td>
+                                <td><span class="preco-text">@item.Preco</span></td>
+                                <td><span class="dano-text">@item.Dano</span></td>
+                                <td><span class="critico-text">@item.Critico</span></td>
+                                <td>@item.Volume</td>
+                                <td>@item.Especial</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="no-results-equipamentos">
+                <i class="bi bi-search" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                <p>Nenhuma arma encontrada para "<strong>@search</strong>"</p>
+            </div>
+        }
+
+        <button class="back-to-top-equipamentos" @onclick="ScrollToTop" title="Voltar ao topo">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+    }
+</div>
 
 @code {
     private List<ArmaItem>? items;
+    private string search = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -71,6 +112,11 @@ else
             items = list;
         }
         catch (Exception) { }
+    }
+
+    private async Task ScrollToTop()
+    {
+        await Task.CompletedTask;
     }
 
     [Inject]

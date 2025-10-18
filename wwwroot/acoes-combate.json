@@ -1,0 +1,68 @@
+{
+  "acoes": [
+    {
+      "categoria": "Ação Padrão",
+      "acoes_detalhadas": [
+        {"nome": "Ativar um item", "descricao": "Ativar um item tecnológico, mágico ou híbrido que necessite de uma ação padrão."},
+        {"nome": "Atacar (corpo a corpo ou à distância)", "descricao": "Realizar um único ataque corpo a corpo ou à distância contra um alvo."},
+        {"nome": "Conjurar uma magia", "descricao": "Lançar uma magia que requer uma ação padrão para ser conjurada."},
+        {"nome": "Concentrar para manter uma magia", "descricao": "Manter a concentração em uma magia ativa que requer concentração contínua."},
+        {"nome": "Defesa total", "descricao": "Você se concentra totalmente em se defender. Recebe +4 de bônus em sua CA até o início do seu próximo turno. Não pode realizar ataques de oportunidade."},
+        {"nome": "Disparo de cobertura", "descricao": "Você fornece fogo de cobertura para um aliado. Escolha um aliado e conceda a ele +2 de bônus de circunstância em CA até o início do seu próximo turno."},
+        {"nome": "Disparo de distração", "descricao": "Você atira para criar uma distração. Escolha um quadrado; inimigos adjacentes sofrem -2 de penalidade em testes de Percepção até o início do seu próximo turno."},
+        {"nome": "Dispensar uma magia", "descricao": "Encerrar voluntariamente uma magia ativa que você conjurou."},
+        {"nome": "Fintar", "descricao": "Realizar um teste de Blefar oposto ao teste de Intuição do alvo. Se for bem-sucedido, o alvo fica desprevenido contra o próximo ataque corpo a corpo que você realizar contra ele antes do final do seu próximo turno."},
+        {"nome": "Lutar defensivamente", "descricao": "Fazer um ataque com -4 de penalidade, mas ganha +2 de bônus de esquiva em CA até o início do seu próximo turno."},
+        {"nome": "Manobra de combate", "descricao": "Realizar uma manobra como derrubar, agarrar, desarmar ou empurrar um oponente."},
+        {"nome": "Usar uma habilidade especial", "descricao": "Ativar uma habilidade de classe, talento ou característica racial que requer uma ação padrão."}
+      ]
+    },
+    {
+      "categoria": "Ação Rápida",
+      "acoes_detalhadas": [
+        {"nome": "Prostrar-se", "descricao": "Deitar-se no chão voluntariamente, ficando caído."},
+        {"nome": "Trocar empunhadura", "descricao": "Mudar a forma como você está segurando uma arma (ex: de uma mão para duas mãos)."}
+      ]
+    },
+    {
+      "categoria": "Ação Completa",
+      "acoes_detalhadas": [
+        {"nome": "Ataque total", "descricao": "Realizar todos os seus ataques disponíveis (ataque básico mais ataques adicionais por Bônus de Ataque Base ou habilidades especiais). Você pode se mover até 1,5 metro (um passo de ajuste) antes, durante ou depois de realizar um ataque total."},
+        {"nome": "Correr", "descricao": "Mover-se até 4 vezes sua velocidade em linha reta. Perde o bônus de Destreza na CA até o início do próximo turno."},
+        {"nome": "Golpe de misericórdia", "descricao": "Executar automaticamente um oponente indefeso, causando dano crítico automático. A vítima deve fazer um teste de Fortitude (CD = 10 + dano causado) ou morrer."},
+        {"nome": "Investida", "descricao": "Mover-se até o dobro da velocidade em linha reta e realizar um único ataque corpo a corpo com +2 de bônus. Sofre -2 de penalidade em CA até o início do próximo turno."},
+        {"nome": "Lutar defensivamente", "descricao": "Realizar um ataque total, mas todos os ataques sofrem -4 de penalidade. Recebe +2 de bônus de esquiva em CA até o início do seu próximo turno."},
+        {"nome": "Recuar", "descricao": "Mover-se até o dobro da velocidade. O primeiro quadrado de movimento não provoca ataques de oportunidade."}
+      ]
+    },
+    {
+      "categoria": "Ação de Movimento",
+      "acoes_detalhadas": [
+        {"nome": "Levantar", "descricao": "Levantar-se quando você está caído. Provoca ataques de oportunidade."},
+        {"nome": "Manipular um item", "descricao": "Pegar, guardar, mover ou interagir com um item. Algumas ações com itens podem provocar ataques de oportunidade."},
+        {"nome": "Mover-se sua velocidade", "descricao": "Mover-se até sua velocidade de movimento. Atravessar quadrados ameaçados por inimigos pode provocar ataques de oportunidade."},
+        {"nome": "Passo cauteloso", "descricao": "Mover-se 1,5 metro (5 pés) sem provocar ataques de oportunidade. Não pode ser combinado com movimento normal."},
+        {"nome": "Rastejar", "descricao": "Mover-se 1,5 metro enquanto caído. Provoca ataques de oportunidade."},
+        {"nome": "Recarregar", "descricao": "Recarregar uma arma. O tipo de ação varia conforme a arma (movimento, ação completa, etc)."},
+        {"nome": "Sacar ou embainhar uma arma", "descricao": "Sacar uma arma ou guardá-la. Com o talento Sacar Rápido, pode sacar como ação livre."}
+      ]
+    },
+    {
+      "categoria": "Reação",
+      "acoes_detalhadas": [
+        {"nome": "Ataque de oportunidade", "descricao": "Realizar um único ataque corpo a corpo contra um oponente que provoca um ataque de oportunidade (geralmente ao se mover fora de um quadrado ameaçado ou realizar certas ações)."},
+        {"nome": "Direcionar ou redirecionar um efeito", "descricao": "Usar uma reação para mudar o alvo ou direção de um efeito mágico ou habilidade, se permitido."}
+      ]
+    },
+    {
+      "categoria": "Outras Ações",
+      "acoes_detalhadas": [
+        {"nome": "Ação livre", "descricao": "Ações que não consomem tempo significativo, como largar um item, falar poucas palavras ou ativar certos itens. Pode realizar várias ações livres por turno, a critério do Mestre."},
+        {"nome": "Ação de 1 rodada", "descricao": "Uma ação que consome seu turno inteiro e continua até o início do seu próximo turno. Você pode realizar um passo de ajuste antes ou depois da ação."},
+        {"nome": "Ação sem ação", "descricao": "Algumas habilidades ou efeitos acontecem automaticamente sem consumir qualquer tipo de ação."},
+        {"nome": "Atrasar", "descricao": "Adiar sua vez na iniciativa. Você pode agir mais tarde na ordem de iniciativa, mas sua nova posição é permanente."},
+        {"nome": "Preparar uma ação", "descricao": "Declarar uma condição específica e uma ação que você realizará quando essa condição for atendida. Sua iniciativa muda para o momento em que a condição é acionada."}
+      ]
+    }
+  ]
+}

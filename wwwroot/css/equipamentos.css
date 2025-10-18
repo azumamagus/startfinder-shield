@@ -1,0 +1,368 @@
+/* Equipamentos - Layout Futurista para Tabelas */
+
+.equipamentos-container {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.equipamentos-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.equipamentos-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #00ff88;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow:
+        0 0 10px rgba(0, 255, 136, 0.8),
+        0 0 20px rgba(0, 255, 136, 0.6),
+        0 0 30px rgba(0, 255, 136, 0.4);
+    margin-bottom: 0.5rem;
+    animation: pulse-glow-green 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-green {
+    0%, 100% {
+        text-shadow:
+            0 0 10px rgba(0, 255, 136, 0.8),
+            0 0 20px rgba(0, 255, 136, 0.6),
+            0 0 30px rgba(0, 255, 136, 0.4);
+    }
+    50% {
+        text-shadow:
+            0 0 15px rgba(0, 255, 136, 1),
+            0 0 30px rgba(0, 255, 136, 0.8),
+            0 0 45px rgba(0, 255, 136, 0.6);
+    }
+}
+
+.equipamentos-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    color: #8892d6;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.search-container-equipamentos {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+.search-input-equipamentos {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    background: rgba(20, 25, 45, 0.8);
+    border: 2px solid #00ff88;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 10px rgba(0, 255, 136, 0.3),
+        inset 0 0 10px rgba(0, 255, 136, 0.1);
+}
+
+.search-input-equipamentos:focus {
+    border-color: #00d4ff;
+    box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.5),
+        inset 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.search-input-equipamentos::placeholder {
+    color: #8892d6;
+}
+
+.search-icon-equipamentos {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00ff88;
+    font-size: 1.2rem;
+}
+
+.table-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: auto;
+    background: rgba(20, 25, 45, 0.6);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 0 30px rgba(0, 255, 136, 0.05);
+    border: 2px solid rgba(0, 255, 136, 0.2);
+}
+
+.equipamentos-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.equipamentos-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.equipamentos-table thead th {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 212, 255, 0.2));
+    color: #00ff88;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 0.75rem;
+    text-align: left;
+    border-bottom: 2px solid #00ff88;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+.equipamentos-table thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.equipamentos-table thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.equipamentos-table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(136, 146, 214, 0.1);
+}
+
+.equipamentos-table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    transform: scale(1.01);
+}
+
+.equipamentos-table tbody tr:nth-child(even) {
+    background: rgba(30, 35, 55, 0.3);
+}
+
+.equipamentos-table tbody td {
+    padding: 0.9rem 0.75rem;
+    color: #b8c5f2;
+    border-bottom: 1px solid rgba(136, 146, 214, 0.1);
+    vertical-align: middle;
+}
+
+/* Coluna de Grupo - destaque */
+.equipamentos-table tbody td:first-child {
+    color: #00d4ff;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+}
+
+/* Coluna de Nome - destaque principal */
+.equipamentos-table tbody td:nth-child(2) {
+    color: #00ff88;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Coluna de Nível - badge */
+.nivel-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: linear-gradient(135deg, #00ff88, #00d4ff);
+    color: #0a0e27;
+    font-weight: 700;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+/* Coluna de Preço */
+.preco-text {
+    color: #ffd700;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Coluna de Dano */
+.dano-text {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+/* Coluna de Crítico */
+.critico-text {
+    color: #ff00ff;
+    font-weight: 500;
+}
+
+/* Estados de loading */
+.loading-state {
+    text-align: center;
+    padding: 3rem;
+    color: #8892d6;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 255, 136, 0.2);
+    border-top-color: #00ff88;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.no-results-equipamentos {
+    text-align: center;
+    padding: 3rem;
+    color: #8892d6;
+    font-size: 1.1rem;
+}
+
+/* Botão voltar ao topo */
+.back-to-top-equipamentos {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #00ff88, #00d4ff);
+    border: none;
+    border-radius: 50%;
+    color: #0a0e27;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow:
+        0 4px 15px rgba(0, 255, 136, 0.5),
+        0 0 20px rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top-equipamentos:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow:
+        0 6px 20px rgba(0, 255, 136, 0.7),
+        0 0 30px rgba(0, 212, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .equipamentos-title {
+        font-size: 1.6rem;
+    }
+
+    .table-wrapper {
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .equipamentos-table {
+        font-size: 0.8rem;
+    }
+
+    .equipamentos-table thead th {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .equipamentos-table tbody td {
+        padding: 0.7rem 0.5rem;
+    }
+
+    .nivel-badge {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+    }
+
+    .back-to-top-equipamentos {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+
+    .equipamentos-container {
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* Scroll horizontal suave */
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: rgba(20, 25, 45, 0.5);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #00ff88, #00d4ff);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #00d4ff, #00ff88);
+}
+
+/* Animação de entrada das linhas */
+.equipamentos-table tbody tr {
+    animation: slideIn 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.equipamentos-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.equipamentos-table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+.equipamentos-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.equipamentos-table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.equipamentos-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+.equipamentos-table tbody tr:nth-child(6) { animation-delay: 0.3s; }
+.equipamentos-table tbody tr:nth-child(7) { animation-delay: 0.35s; }
+.equipamentos-table tbody tr:nth-child(8) { animation-delay: 0.4s; }
+.equipamentos-table tbody tr:nth-child(9) { animation-delay: 0.45s; }
+.equipamentos-table tbody tr:nth-child(10) { animation-delay: 0.5s; }
