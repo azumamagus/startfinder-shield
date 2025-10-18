@@ -1,0 +1,12 @@
+[
+  { "grupo": "SEM CATEGORIA", "nome": "Golpe desarmado", "nivel": 0, "preco": "—", "dano": "1d3", "critico": "Cc", "volume": "—", "especial": "Arcaica, não-letal" },
+  { "grupo": "SEM CATEGORIA", "nome": "Clava", "nivel": 0, "preco": "—", "dano": "1d6", "critico": "Cc", "volume": "—", "especial": "L Analógica, arcaica" },
+  { "grupo": "SEM CATEGORIA", "nome": "Cassetete tático", "nivel": 1, "preco": "90", "dano": "1d4", "critico": "Cc", "volume": "—", "especial": "L Analógica, operativa" },
+  { "grupo": "SEM CATEGORIA", "nome": "Faca de sobrevivência", "nivel": 1, "preco": "95", "dano": "1d4", "critico": "Ct", "volume": "—", "especial": "L Analógica, operativa" },
+  { "grupo": "SEM CATEGORIA", "nome": "Luva de batalha cestus", "nivel": 1, "preco": "100", "dano": "1d4", "critico": "Cc", "volume": "—", "especial": "L Analógica" },
+  { "grupo": "SEM CATEGORIA", "nome": "Espada de duelo tática", "nivel": 2, "preco": "475", "dano": "1d6", "critico": "Ct", "volume": "—", "especial": "L Analógica" },
+  { "grupo": "SEM CATEGORIA", "nome": "Faca tática", "nivel": 7, "preco": "6000", "dano": "2d4", "critico": "Ct", "volume": "—", "especial": "L Analógica, operativa" },
+  { "grupo": "SEM CATEGORIA", "nome": "Espada de duelo vibrolâmina", "nivel": 8, "preco": "9500", "dano": "2d6", "critico": "Ct", "volume": "—", "especial": "L Energizada (capacidade 20, uso 1)" },
+  { "grupo": "SEM CATEGORIA", "nome": "Incapacitador", "nivel": 9, "preco": "14200", "dano": "3d4", "critico": "Cc", "volume": "Zonzear", "especial": "L Energizada (capacidade 20, uso 2), não-letal, operativa" },
+  { "grupo": "SEM CATEGORIA", "nome": "Luva de batalha poderosa", "nivel": 10, "preco": "16100", "dano": "2d8", "critico": "Cc", "volume": "—", "especial": "L Energizada (capacidade 20, uso 1)" }
+]
