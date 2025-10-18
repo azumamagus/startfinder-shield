@@ -1,5 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
+
+/* Ensure body/html backgrounds cover full viewport */
+html, body, #app {
+    height: 100%;
+    background: linear-gradient(135deg, #0a1124 0%, #1a2233 100%);
+}
+
+/* Force top row/navbar to use cyber gradient (important to override bootstrap or other defaults) */
+.top-row, .medieval-navbar {
+    background: linear-gradient(90deg, #081029 0%, #122033 100%) !important;
+    border-bottom: 1px solid rgba(0,191,255,0.06);
+}
+
+/* Make sure container doesn't have a white background */
+.container-fluid, .page, .sidebar {
+    background: transparent !important;
+}
+
+/* If any Bootstrap navbar classes override color, force link colors */
+.top-row .navbar-brand, .top-row a, .top-row .nav-link {
+    color: #00ffe7 !important;
+}
+
+/* Ensure loading overlay isn't visible after app loads (in case it remains) */
+#app .loading-progress, #app .loading-progress-text {
+    background: transparent;
+}
+
+/* small tweak for navbar-toggler icon visibility */
+.medieval-toggler .navbar-toggler-icon, .navbar-toggler-icon {
+    filter: drop-shadow(0 0 6px rgba(0,191,255,0.25));
+}
+
 body, html {
     font-family: 'Orbitron', Arial, sans-serif;
     background: linear-gradient(135deg, #0a1124 0%, #1a2233 100%);      
