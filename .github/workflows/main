@@ -42,6 +42,12 @@ jobs:
             - name: Publish Dotnet
               run: dotnet publish Starfinder.Shield.csproj -c:Release -o docs --nologo
 
+            - name: Configure Base Href for GitHub Pages
+              run: |
+                sed -i 's|<base href="/" />|<base href="/startfinder-shield/" />|g' docs/wwwroot/index.html
+                echo "✅ Base href configured for GitHub Pages"
+                cat docs/wwwroot/index.html | grep "base href"
+
             - name: Setup Pages
               uses: actions/configure-pages@v4
 
