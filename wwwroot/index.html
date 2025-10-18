@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Starfinder.Shield</title>
-    <base href="https://azumamagus.github.io/startfinder-shield/" />
-    <!--<base href="/" />-->
+    <!--<base href="https://azumamagus.github.io/startfinder-shield/" />-->
+    <base href="/" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -31,6 +31,14 @@
         <span class="dismiss">🗙</span>
     </div>
     <script src="js/resizeInterop.js"></script>
+    <script type="text/javascript">
+        if (sessionStorage.redirect) {
+            const redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            history.replaceState(null, null, redirect);
+        }
+    </script>
+
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
