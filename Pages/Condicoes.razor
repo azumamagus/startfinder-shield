@@ -1,0 +1,206 @@
+@page "/condicoes"
+@inject HttpClient Http
+@inject IJSRuntime JS
+@using System.Text.Json
+
+<link href="css/condicoes-futurista.css" rel="stylesheet" />
+
+@if (!string.IsNullOrEmpty(erro))
+{
+    <div class="medieval-modal medieval-modal-loading" style="max-width:900px;margin:1.5rem auto;">
+        <p style="color: darkred; margin:0;">Erro ao carregar condições: @erro</p>
+    </div>
+}
+else if (categorias is null)
+{
+    <div class="medieval-modal medieval-modal-loading" style="max-width:900px;margin:1.5rem auto;">
+        <p style="margin:0;">Carregando condições...</p>
+    </div>
+}
+else
+{
+    <div class="medieval-modal" style="max-width:1200px;margin:1.5rem auto;padding:1rem;">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="medieval-title" style="margin:0; font-size:1.6rem;">Condições de Jogo</h1>
+            <div class="d-flex gap-2">
+                <input class="form-control" placeholder="Pesquisar condições..." @bind="search" style="min-width:180px;" />
+                <button class="medieval-close-btn d-md-none" @onclick="ToggleCategorias">Categorias</button>
+            </div>
+        </div>
+
+        <div class="condicoes-flex" style="gap:1rem; align-items:flex-start;">
+            <aside class="condicoes-categorias" style="flex:0 0 220px; display:@(showCategorias || isDesktop ? "block" : "none");">
+                <h2>Categorias</h2>
+                <ul>
+                    @foreach (var cat in categorias)
+                    {
+                        <li class="@(cat == categoriaSelecionada ? "active" : "")" @onclick="() => SelecionarCategoriaAsync(cat)">
+                            @cat.Categoria
+                        </li>
+                    }
+                </ul>
+            </aside>
+
+            <main class="condicoes-main" style="flex:1;">
+                <h3>@categoriaSelecionada?.Categoria</h3>
+                <div class="condicoes-list">
+                    @if (categoriaSelecionada != null)
+                    {
+                        var filtered = categoriaSelecionada.CondicoesDetalhadas
+                            .Where(c => string.IsNullOrWhiteSpace(search) || c.Nome.Contains(search, StringComparison.OrdinalIgnoreCase) || c.Descricao.Contains(search, StringComparison.OrdinalIgnoreCase))
+                            .ToList();
+
+                        if (!filtered.Any())
+                        {
+                            <div class="condicao-card">
+                                <p>Nenhuma condição encontrada.</p>
+                            </div>
+                        }
+                        else
+                        {
+                            foreach (var cond in filtered)
+                            {
+                                var expanded = expandedItems.Contains(cond.Nome);
+                                <div class="condicao-card @(expanded ? "expanded" : "")" style="cursor:pointer;" @onclick="() => ToggleExpanded(cond.Nome)">
+                                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                                        <div>
+                                            <span class="condicao-nome">@cond.Nome</span>
+                                        </div>
+                                        <div style="font-size:0.9rem; color:#6b4a2a;">@((expanded) ? "—" : "+")</div>
+                                    </div>
+                                    @if (expanded)
+                                    {
+                                        <div class="condicao-body" style="margin-top:0.6rem;">
+                                            <p class="condicao-desc" style="margin:0;">@cond.Descricao</p>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </main>
+        </div>
+
+        <div class="d-flex justify-content-end mt-3">
+            <a class="medieval-close-btn" href="/">Fechar</a>
+        </div>
+    </div>
+}
+
+@code {
+    private List<CondicaoCategoria>? categorias;
+    private CondicaoCategoria? categoriaSelecionada;
+    private string? erro;
+    private string search = string.Empty;
+    private HashSet<string> expandedItems = new();
+    private bool showCategorias = false;
+    private bool isDesktop = true;
+
+    private DotNetObjectReference<object>? objRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CarregarCategoriasAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create<object>(this);
+            try
+            {
+                await JS.InvokeVoidAsync("resizeInterop.registerResize", objRef);
+                var width = await JS.InvokeAsync<int>("resizeInterop.getWidth");
+                await SetWidth(width);
+            }
+            catch { }
+        }
+    }
+
+    [JSInvokable]
+    public Task SetWidth(int width)
+    {
+        var prev = isDesktop;
+        isDesktop = width >= 768;
+        if (prev != isDesktop)
+            StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private async Task CarregarCategoriasAsync()
+    {
+        try
+        {
+            var json = await Http.GetStringAsync("/condicoes.json");
+            categorias = new List<CondicaoCategoria>();
+            using var doc = JsonDocument.Parse(json);
+            foreach (var cat in doc.RootElement.GetProperty("condicoes").EnumerateArray())
+            {
+                var novaCat = new CondicaoCategoria
+                {
+                    Categoria = cat.GetProperty("categoria").GetString() ?? string.Empty,
+                    CondicoesDetalhadas = new List<CondicaoDetalhada>()
+                };
+                foreach (var cond in cat.GetProperty("condicoes_detalhadas").EnumerateArray())
+                {
+                    novaCat.CondicoesDetalhadas.Add(new CondicaoDetalhada
+                    {
+                        Nome = cond.GetProperty("nome").GetString() ?? string.Empty,
+                        Descricao = cond.GetProperty("descricao").GetString() ?? string.Empty
+                    });
+                }
+                categorias.Add(novaCat);
+            }
+            categoriaSelecionada = categorias.FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            erro = ex.Message;
+        }
+        StateHasChanged();
+    }
+
+    private Task SelecionarCategoriaAsync(CondicaoCategoria cat)
+    {
+        categoriaSelecionada = cat;
+        expandedItems.Clear();
+        return Task.CompletedTask;
+    }
+
+    private void ToggleExpanded(string nome)
+    {
+        if (!expandedItems.Add(nome))
+            expandedItems.Remove(nome);
+    }
+
+    private void ToggleCategorias()
+    {
+        showCategorias = !showCategorias;
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            if (objRef is not null)
+            {
+                await JS.InvokeVoidAsync("resizeInterop.unregisterResize");
+                objRef.Dispose();
+            }
+        }
+        catch { }
+    }
+
+    public class CondicaoCategoria
+    {
+        public string Categoria { get; set; } = "";
+        public List<CondicaoDetalhada> CondicoesDetalhadas { get; set; } = new();
+    }
+    public class CondicaoDetalhada
+    {
+        public string Nome { get; set; } = "";
+        public string Descricao { get; set; } = "";
+    }
+}

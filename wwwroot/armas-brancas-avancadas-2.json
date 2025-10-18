@@ -1,0 +1,4 @@
+[
+  { "grupo": "SÔNICA", "nome": "Manopla pulsante trovejante", "nivel": 2, "preco": "475", "dano": "1d6", "critico": "Cc & So Derrubar", "volume": "1", "especial": "Energizada (capacidade 20, uso 1)" },
+  { "grupo": "SÔNICA", "nome": "Manopla pulsante DBF", "nivel": 7, "preco": "7340", "dano": "2d6", "critico": "Cc & So Derrubar", "volume": "1", "especial": "Energizada (capacidade 20, uso 1)" }
+]

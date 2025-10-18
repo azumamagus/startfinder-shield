@@ -1,0 +1,6 @@
+[
+  { "grupo": "CHOQUE", "nome": "Eletro-cassetete de estática", "nivel": 8, "preco": "9150", "dano": "1d12", "critico": "El Arco", "volume": "1d4", "especial": "Atordoamento, energizada (capacidade 20, uso 2)" },
+  { "grupo": "CHOQUE", "nome": "Eletro-cassetete aurora", "nivel": 11, "preco": "23000", "dano": "2d12", "critico": "El Arco", "volume": "2d4", "especial": "Atordoamento, energizada (capacidade 20, uso 2)" },
+  { "grupo": "ÍGNEA", "nome": "Espada fogo celeste tática", "nivel": 7, "preco": "6120", "dano": "2d4", "critico": "Fg Queimar", "volume": "1d8", "especial": "Energizada (capacidade 20, uso 2)" },
+  { "grupo": "PLASMA", "nome": "Espada de plasma tática", "nivel": 9, "preco": "14550", "dano": "2d8", "critico": "El & Fg Ferimento grave", "volume": "1", "especial": "Energizada (capacidade 20, uso 2)" }
+]

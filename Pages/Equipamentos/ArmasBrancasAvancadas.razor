@@ -1,0 +1,77 @@
+@page "/equipamentos/armas-brancas-avancadas"
+@using System.Text.Json
+@using Starfinder.Shield.Models
+
+<PageTitle>Armas Brancas Avançadas</PageTitle>
+<link href="css/condicoes-futurista.css" rel="stylesheet" />
+
+<h3>ARMAS BRANCAS AVANÇADAS</h3>
+
+@if (items is null)
+{
+    <p>Carregando...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>GRUPO</th>
+                <th>NOME</th>
+                <th>NÍVEL</th>
+                <th>PREÇO</th>
+                <th>DANO</th>
+                <th>CRÍTICO</th>
+                <th>VOLUME</th>
+                <th>ESPECIAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var it in items)
+            {
+                <tr>
+                    <td>@it.Grupo</td>
+                    <td>@it.Nome</td>
+                    <td>@it.Nivel</td>
+                    <td>@it.Preco</td>
+                    <td>@it.Dano</td>
+                    <td>@it.Critico</td>
+                    <td>@it.Volume</td>
+                    <td>@it.Especial</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<ArmaItem>? items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var json = await Http.GetStringAsync("/armas-brancas-avancadas.json");
+            var doc = JsonDocument.Parse(json);
+            var list = new List<ArmaItem>();
+            foreach (var el in doc.RootElement.EnumerateArray())
+            {
+                list.Add(new ArmaItem
+                {
+                    Grupo = el.GetProperty("grupo").GetString() ?? string.Empty,
+                    Nome = el.GetProperty("nome").GetString() ?? string.Empty,
+                    Nivel = el.GetProperty("nivel").GetInt32(),
+                    Preco = el.GetProperty("preco").GetString() ?? string.Empty,
+                    Dano = el.GetProperty("dano").GetString() ?? string.Empty,
+                    Critico = el.GetProperty("critico").GetString() ?? string.Empty,
+                    Volume = el.GetProperty("volume").GetString() ?? string.Empty,
+                    Especial = el.GetProperty("especial").GetString() ?? string.Empty
+                });
+            }
+            items = list;
+        }
+        catch (Exception) { }
+    }
+    [Inject]
+    private HttpClient Http { get; set; } = default!;
+}
