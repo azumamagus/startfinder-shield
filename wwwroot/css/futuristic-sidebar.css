@@ -1,0 +1,109 @@
+﻿/* Sidebar Futurista */
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a1124 0%, #1a2233 100%);
+    color: #e0e6f0;
+    font-family: 'Orbitron', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.futuristic-sidebar {
+    width: 250px;
+    background: linear-gradient(160deg, #0a1124 60%, #1a2233 100%);
+    box-shadow: 0 0 25px #00ffe766;
+    border-right: 2px solid #00bfff88;
+    padding: 1.5rem 1rem;
+    transition: transform 0.3s ease-in-out;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+}
+
+    .futuristic-sidebar.hidden {
+        transform: translateX(-100%);
+    }
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.neon-logo {
+    font-size: 1.2rem;
+    color: #00ffe7;
+    text-shadow: 0 0 8px #00ffe7cc;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.futuristic-sidebar .nav-link {
+    color: #b6eaff;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+    .futuristic-sidebar .nav-link:hover,
+    .futuristic-sidebar .nav-link.active {
+        background: #00bfff33;
+        color: #00ffe7;
+        box-shadow: 0 0 12px #00ffe799;
+    }
+
+.neon-icon {
+    color: #00ffe7;
+    margin-right: 8px;
+}
+
+/* Overlay para mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 17, 36, 0.8);
+    backdrop-filter: blur(2px);
+    z-index: 1500;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+    .sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+/* Conteúdo principal */
+.futuristic-main {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar-toggle {
+    border-color: #00bfff;
+    color: #00ffe7;
+    text-shadow: 0 0 8px #00ffe799;
+}
+
+    .sidebar-toggle:hover {
+        background: #00bfff22;
+        box-shadow: 0 0 10px #00ffe799;
+    }
+
+/* Modo mobile */
+@media (max-width: 992px) {
+    .futuristic-sidebar {
+        transform: translateX(-100%);
+    }
+
+        .futuristic-sidebar.active {
+            transform: translateX(0);
+        }
+
+    .futuristic-main {
+        margin-left: 0;
+    }
+}

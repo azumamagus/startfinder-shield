@@ -1,0 +1,51 @@
+﻿@inherits LayoutComponentBase
+
+<div class="layout-container">
+    <!-- Sidebar -->
+    <nav class="futuristic-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h4 class="neon-logo">⚡ Starfinder Shield</h4>
+            <button class="btn-close btn-close-white sidebar-close" id="closeSidebar"></button>
+        </div>
+
+        <ul class="nav flex-column mt-4">
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-house-door neon-icon"></i> Início
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/personagens">
+                    <i class="bi bi-person-badge neon-icon"></i> Personagens
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/inventario">
+                    <i class="bi bi-gem neon-icon"></i> Inventário
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/config">
+                    <i class="bi bi-gear neon-icon"></i> Configurações
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Overlay para mobile -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Conteúdo -->
+    <div class="content flex-grow-1">
+        <header class="navbar navbar-dark bg-transparent px-3">
+            <button class="btn btn-outline-light sidebar-toggle" id="openSidebar">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <h5 class="neon-text m-0">Starfinder Shield</h5>
+        </header>
+
+        <main class="p-4 futuristic-main">
+            @Body
+        </main>
+    </div>
+</div>

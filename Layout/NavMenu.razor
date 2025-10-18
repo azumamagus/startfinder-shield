@@ -1,42 +1,48 @@
-﻿@* Importação da fonte medieval já está no CSS global *@
+﻿@* NavMenu Futurista Cyberpunk *@
 
-<div class="top-row medieval-navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand medieval-title" href="">Starfinder.Shield</a>
-        <button title="Menu de Navegação" class="navbar-toggler medieval-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
+<div class="navbar futuristic-navbar px-3">
+    <div class="d-flex align-items-center justify-content-between w-100">
+        <!-- Nome / Logo -->
+        <a class="navbar-brand neon-title" href="/">
+            ⚡ Starfinder <span class="neon-sub">Shield</span>
+        </a>
+
+        <!-- Botão mobile -->
+        <button title="Abrir Menu" class="btn btn-outline-neon d-lg-none" @onclick="ToggleNavMenu">
+            <i class="bi bi-list fs-3"></i>
         </button>
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable medieval-menu" @onclick="ToggleNavMenu">
-    <nav class="nav flex-column">
+<!-- Sidebar / Menu -->
+<div class="@NavMenuCssClass nav-scrollable futuristic-sidebar" @onclick="ToggleNavMenu">
+    <nav class="nav flex-column mt-4">
         <div class="nav-item px-3">
-            <NavLink class="nav-link medieval-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Início
-            </NavLink>
-        </div>    
-        <div class="nav-item px-3">
-            <NavLink class="nav-link medieval-link medieval-conditions-btn" href="/condicoes">
-                <span class="bi bi-shield-shaded" aria-hidden="true"></span> Condições de Jogo
+            <NavLink class="nav-link neon-link" href="" Match="NavLinkMatch.All">
+                <i class="bi bi-house-door-fill me-2"></i> Início
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            @* Equipamentos com submenu *@
-            <div @onclick:stopPropagation="true">
-                <button class="nav-link medieval-link" @onclick:stopPropagation="true" @onclick="ToggleEquipamentos">
-                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Equipamentos
-                </button>
-                @if (showEquipamentos)
-                {
-                    <div class="ms-3" @onclick:stopPropagation="true">
-                        <NavLink class="nav-link medieval-link" href="/equipamentos/armas-brancas-basicas" @onclick="() => showEquipamentos = false">ARMAS BRANCAS BÁSICAS</NavLink>
-                        <NavLink class="nav-link medieval-link" href="/equipamentos/armas-brancas-avancadas" @onclick="() => showEquipamentos = false">ARMAS BRANCAS AVANÇADAS</NavLink>
-                        <NavLink class="nav-link medieval-link" href="/equipamentos/armas-brancas-avancadas-2" @onclick="() => showEquipamentos = false">ARMAS BRANCAS AVANÇADAS (2)</NavLink>
-                    </div>
-                }
-            </div>
+            <NavLink class="nav-link neon-link" href="/condicoes">
+                <i class="bi bi-shield-shaded me-2"></i> Condições de Jogo
+            </NavLink>
+        </div>
+
+        <!-- Equipamentos com submenu -->
+        <div class="nav-item px-3">
+            <button class="nav-link neon-link d-flex justify-content-between align-items-center" @onclick:stopPropagation="true" @onclick="ToggleEquipamentos">
+                <span><i class="bi bi-plus-square-fill me-2"></i> Equipamentos</span>
+                <i class="bi" @(showEquipamentos ? "bi-chevron-up" : "bi-chevron-down" )></i>
+            </button>
+            @if (showEquipamentos)
+            {
+                <div class="ms-4 mt-2">
+                    <NavLink class="nav-link neon-sublink" href="/equipamentos/armas-brancas-basicas" @onclick="() => showEquipamentos = false">Armas Brancas Básicas</NavLink>
+                    <NavLink class="nav-link neon-sublink" href="/equipamentos/armas-brancas-avancadas" @onclick="() => showEquipamentos = false">Armas Brancas Avançadas</NavLink>
+                    <NavLink class="nav-link neon-sublink" href="/equipamentos/armas-brancas-avancadas-2" @onclick="() => showEquipamentos = false">Armas Brancas Avançadas (2)</NavLink>
+                </div>
+            }
         </div>
     </nav>
 </div>
@@ -45,7 +51,7 @@
     private bool collapseNavMenu = true;
     private bool showEquipamentos = false;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : "show";
 
     private void ToggleNavMenu()
     {
