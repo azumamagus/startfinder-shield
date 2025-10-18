@@ -133,7 +133,7 @@ else
     {
         try
         {
-            var json = await Http.GetStringAsync("/condicoes.json");
+            var json = await Http.GetStringAsync("condicoes.json");
             categorias = new List<CondicaoCategoria>();
             using var doc = JsonDocument.Parse(json);
             foreach (var cat in doc.RootElement.GetProperty("condicoes").EnumerateArray())

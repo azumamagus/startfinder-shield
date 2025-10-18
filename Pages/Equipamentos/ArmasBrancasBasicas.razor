@@ -2,10 +2,10 @@
 @using System.Text.Json
 @using Starfinder.Shield.Models
 
-<PageTitle>Armas Brancas Básicas</PageTitle>
+<PageTitle>Armas Brancas Bï¿½sicas</PageTitle>
 <link href="css/condicoes-futurista.css" rel="stylesheet" />
 
-<h3>ARMAS BRANCAS BÁSICAS</h3>
+<h3>ARMAS BRANCAS Bï¿½SICAS</h3>
 
 @if (items is null)
 {
@@ -17,11 +17,11 @@ else
         <thead>
             <tr>
                 <th>ARMAS</th>
-                <th>DE UMA MÃO</th>
-                <th>NÍVEL</th>
-                <th>PREÇO</th>
+                <th>DE UMA Mï¿½O</th>
+                <th>Nï¿½VEL</th>
+                <th>PREï¿½O</th>
                 <th>DANO</th>
-                <th>CRÍTICO</th>
+                <th>CRï¿½TICO</th>
                 <th>VOLUME</th>
                 <th>ESPECIAL</th>
             </tr>
@@ -51,7 +51,7 @@ else
     {
         try
         {
-            var json = await Http.GetStringAsync("/armas-brancas-basicas.json");
+            var json = await Http.GetStringAsync("armas-brancas-basicas.json");
             var doc = JsonDocument.Parse(json);
             var list = new List<ArmaItem>();
             foreach (var el in doc.RootElement.EnumerateArray())
