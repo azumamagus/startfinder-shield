@@ -1,0 +1,34 @@
+﻿@inherits LayoutComponentBase
+
+<div class="app-shell">
+    <header class="topbar">
+        <div class="d-flex align-items-center">
+            <button id="openSidebar" class="btn btn-outline-neon d-lg-none me-2" aria-label="Abrir menu">
+                <i class="bi bi-list fs-3"></i>
+            </button>
+
+            <button id="toggleSidebarDesktop" class="btn btn-outline-light d-none d-lg-inline me-2" aria-label="Alternar sidebar">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+
+            <a class="brand" href="/">
+                <span class="brand-main">⚡ Starfinder</span>
+                <span class="brand-sub">Shield</span>
+            </a>
+        </div>
+
+        <div>
+            <a class="top-link d-none d-md-inline" href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+    </header>
+
+    <div class="layout-body">
+        <NavMenu />
+
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+        <main class="main-area">
+            @Body
+        </main>
+    </div>
+</div>

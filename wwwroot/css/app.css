@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
+/* ============================================
+   CSS VARIABLES GLOBAIS
+   ============================================ */
+:root {
+    --sidebar-width: 240px;
+    --topbar-height: 56px;
+    --accent: #00ffe7;
+    --accent-dark: #00bfff;
+    --bg-dark: rgba(10, 17, 36, 0.95);
+    --bg-sidebar: rgba(8, 12, 24, 0.97);
+}
 
 /* Ensure body/html backgrounds cover full viewport */
 html, body, #app {
@@ -11,6 +22,12 @@ html, body, #app {
 .top-row, .medieval-navbar {
     background: linear-gradient(90deg, #081029 0%, #122033 100%) !important;
     border-bottom: 1px solid rgba(0,191,255,0.06);
+}
+
+/* ensure top-row doesn't overlap higher z-index elements like the navbar */
+.top-row {
+    position: relative;
+    z-index: 100; /* lower than .futuristic-navbar z-index (2100) */
 }
 
 /* Make sure container doesn't have a white background */
@@ -279,5 +296,163 @@ input[type="date"].form-control, input[type="time"].form-control {
     }
     .condicoes-list {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   SIDEBAR - GLOBAL STYLES
+   ============================================ */
+
+.futuristic-sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    position: fixed;
+    top: var(--topbar-height);
+    left: 0;
+    height: calc(100vh - var(--topbar-height));
+    padding: 1rem 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+    box-shadow: 2px 0 20px rgba(0, 255, 231, 0.08);
+}
+
+/* Sidebar header */
+.futuristic-sidebar .sidebar-header {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.futuristic-sidebar .neon-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 8px rgba(0, 255, 231, 0.5);
+}
+
+/* Nav items */
+.futuristic-sidebar .nav-link {
+    color: var(--accent);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+}
+
+.futuristic-sidebar .nav-link:hover,
+.futuristic-sidebar .nav-link.active {
+    background: rgba(0, 255, 231, 0.1);
+    color: #fff;
+    text-shadow: 0 0 6px var(--accent);
+    border-left: 3px solid var(--accent);
+}
+
+/* Subitens */
+.futuristic-sidebar .neon-sublink {
+    font-size: 0.85rem;
+    color: #80ffff;
+    text-transform: none;
+    padding-left: 2rem;
+}
+
+.futuristic-sidebar .neon-sublink:hover {
+    color: #fff;
+    text-shadow: 0 0 6px #00ffff;
+}
+
+/* Estado escondido */
+.futuristic-sidebar.hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Scrollbar customizado */
+.futuristic-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.futuristic-sidebar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.futuristic-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 231, 0.3);
+    border-radius: 3px;
+}
+
+.futuristic-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 231, 0.5);
+}
+
+/* ============================================
+   OVERLAY - GLOBAL STYLES
+   ============================================ */
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    pointer-events: none;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* ============================================
+   MAIN AREA ADJUSTMENTS
+   ============================================ */
+
+.main-area {
+    transition: margin-left 0.3s ease;
+}
+
+/* Desktop: dá espaço para o sidebar */
+@media (min-width: 992px) {
+    .main-area {
+        margin-left: var(--sidebar-width);
+    }
+
+    /* Quando sidebar está escondido, remove margem */
+    body:has(.futuristic-sidebar.hidden) .main-area {
+        margin-left: 0;
+    }
+}
+
+/* ============================================
+   MOBILE SIDEBAR
+   ============================================ */
+
+@media (max-width: 991px) {
+    /* Sidebar escondido por padrão no mobile */
+    .futuristic-sidebar {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    /* Sidebar visível quando .show é adicionado */
+    .futuristic-sidebar.show {
+        transform: translateX(0);
+        opacity: 1;
+        z-index: 1150;
+        pointer-events: all;
+    }
+
+    /* Main area sempre sem margem no mobile */
+    .main-area {
+        margin-left: 0 !important;
     }
 }

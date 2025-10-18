@@ -1,0 +1,297 @@
+/* ============================================
+   STARFINDER SHIELD - LAYOUT UNIFICADO
+   ============================================ */
+
+:root {
+    --sidebar-width: 240px;
+    --topbar-height: 56px;
+    --accent: #00ffe7;
+    --accent-dark: #00bfff;
+    --bg-dark: rgba(10, 17, 36, 0.95);
+    --bg-sidebar: rgba(8, 12, 24, 0.97);
+}
+
+/* ============================================
+   APP SHELL
+   ============================================ */
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   TOPBAR (Header fixo no topo)
+   ============================================ */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--topbar-height);
+    background: var(--bg-dark);
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Brand/Título */
+.topbar .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: calc(100vw - 200px);
+}
+
+.topbar .brand-main {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.25rem;
+    text-shadow: 0 0 8px rgba(0, 255, 231, 0.5);
+}
+
+.topbar .brand-sub {
+    color: #80ffff;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+/* Link About */
+.top-link {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.top-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--accent);
+}
+
+/* Botões toggle */
+.btn-outline-light,
+.btn-outline-neon {
+    border-color: var(--accent);
+    color: var(--accent);
+    transition: all 0.2s;
+}
+
+.btn-outline-light:hover,
+.btn-outline-neon:hover {
+    background: var(--accent);
+    color: #0a1124;
+    box-shadow: 0 0 12px var(--accent);
+}
+
+/* ============================================
+   LAYOUT BODY (Sidebar + Main)
+   ============================================ */
+
+.layout-body {
+    margin-top: var(--topbar-height);
+    min-height: calc(100vh - var(--topbar-height));
+    display: flex;
+    position: relative;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
+.futuristic-sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    position: fixed;
+    top: var(--topbar-height);
+    left: 0;
+    height: calc(100vh - var(--topbar-height));
+    padding: 1rem 0;
+    overflow-y: auto;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    z-index: 1000;
+    box-shadow: 2px 0 20px rgba(0, 255, 231, 0.08);
+}
+
+/* Sidebar header */
+.futuristic-sidebar .sidebar-header {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.futuristic-sidebar .neon-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 8px rgba(0, 255, 231, 0.5);
+}
+
+/* Nav items */
+.futuristic-sidebar .nav-link {
+    color: var(--accent);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+}
+
+.futuristic-sidebar .nav-link:hover,
+.futuristic-sidebar .nav-link.active {
+    background: rgba(0, 255, 231, 0.1);
+    color: #fff;
+    text-shadow: 0 0 6px var(--accent);
+    border-left: 3px solid var(--accent);
+}
+
+/* Subitens */
+.futuristic-sidebar .neon-sublink {
+    font-size: 0.85rem;
+    color: #80ffff;
+    text-transform: none;
+    padding-left: 2rem;
+}
+
+.futuristic-sidebar .neon-sublink:hover {
+    color: #fff;
+    text-shadow: 0 0 6px #00ffff;
+}
+
+/* Estado escondido no desktop */
+.futuristic-sidebar.hidden {
+    transform: translateX(-280px);
+    opacity: 0;
+}
+
+/* ============================================
+   OVERLAY (Mobile)
+   ============================================ */
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   MAIN AREA (Conteúdo principal)
+   ============================================ */
+
+.main-area {
+    flex: 1;
+    padding: 1.5rem;
+    background: transparent;
+    transition: margin-left 0.25s ease;
+}
+
+/* No desktop, dá espaço para o sidebar */
+@media (min-width: 992px) {
+    .main-area {
+        margin-left: var(--sidebar-width);
+    }
+
+    /* Quando sidebar está escondido, remove margem */
+    .futuristic-sidebar.hidden ~ .main-area {
+        margin-left: 0;
+    }
+}
+
+/* ============================================
+   RESPONSIVIDADE - MOBILE
+   ============================================ */
+
+@media (max-width: 991px) {
+    /* Sidebar escondido por padrão no mobile */
+    .futuristic-sidebar {
+        transform: translateX(-280px);
+        opacity: 0;
+    }
+
+    /* Sidebar visível quando .show é adicionado */
+    .futuristic-sidebar.show {
+        transform: translateX(0);
+        opacity: 1;
+        z-index: 1150;
+    }
+
+    /* Main area sem margem no mobile */
+    .main-area {
+        margin-left: 0;
+    }
+
+    /* Brand menor no mobile */
+    .topbar .brand {
+        max-width: calc(100vw - 150px);
+    }
+
+    .topbar .brand-main {
+        font-size: 1rem;
+    }
+
+    .topbar .brand-sub {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile muito pequeno */
+@media (max-width: 576px) {
+    .topbar .brand {
+        max-width: calc(100vw - 120px);
+    }
+
+    .topbar .brand-main {
+        font-size: 0.9rem;
+    }
+
+    .topbar .brand-sub {
+        display: none;
+    }
+
+    .topbar {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* ============================================
+   SCROLLBAR CUSTOMIZADO (Sidebar)
+   ============================================ */
+
+.futuristic-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.futuristic-sidebar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.futuristic-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 231, 0.3);
+    border-radius: 3px;
+}
+
+.futuristic-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 231, 0.5);
+}
