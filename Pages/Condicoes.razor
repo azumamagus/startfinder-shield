@@ -8,22 +8,22 @@
 @if (!string.IsNullOrEmpty(erro))
 {
     <div class="medieval-modal medieval-modal-loading" style="max-width:900px;margin:1.5rem auto;">
-        <p style="color: darkred; margin:0;">Erro ao carregar condições: @erro</p>
+        <p style="color: darkred; margin:0;">Erro ao carregar condiï¿½ï¿½es: @erro</p>
     </div>
 }
 else if (categorias is null)
 {
     <div class="medieval-modal medieval-modal-loading" style="max-width:900px;margin:1.5rem auto;">
-        <p style="margin:0;">Carregando condições...</p>
+        <p style="margin:0;">Carregando condiï¿½ï¿½es...</p>
     </div>
 }
 else
 {
     <div class="medieval-modal" style="max-width:1200px;margin:1.5rem auto;padding:1rem;">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1 class="medieval-title" style="margin:0; font-size:1.6rem;">Condições de Jogo</h1>
+            <h1 class="medieval-title" style="margin:0; font-size:1.6rem;">Condiï¿½ï¿½es de Jogo</h1>
             <div class="d-flex gap-2">
-                <input class="form-control" placeholder="Pesquisar condições..." @bind="search" style="min-width:180px;" />
+                <input class="form-control" placeholder="Pesquisar condiï¿½ï¿½es..." @bind="search" style="min-width:180px;" />
                 <button class="medieval-close-btn d-md-none" @onclick="ToggleCategorias">Categorias</button>
             </div>
         </div>
@@ -53,7 +53,7 @@ else
                         if (!filtered.Any())
                         {
                             <div class="condicao-card">
-                                <p>Nenhuma condição encontrada.</p>
+                                <p>Nenhuma condiï¿½ï¿½o encontrada.</p>
                             </div>
                         }
                         else
@@ -66,7 +66,7 @@ else
                                         <div>
                                             <span class="condicao-nome">@cond.Nome</span>
                                         </div>
-                                        <div style="font-size:0.9rem; color:#6b4a2a;">@((expanded) ? "—" : "+")</div>
+                                        <div style="font-size:0.9rem; color:#6b4a2a;">@((expanded) ? "ï¿½" : "+")</div>
                                     </div>
                                     @if (expanded)
                                     {
@@ -83,7 +83,7 @@ else
         </div>
 
         <div class="d-flex justify-content-end mt-3">
-            <a class="medieval-close-btn" href="/">Fechar</a>
+            <a class="medieval-close-btn" href="">Fechar</a>
         </div>
     </div>
 }
