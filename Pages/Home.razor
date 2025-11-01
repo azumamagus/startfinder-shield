@@ -1,3 +1,312 @@
-﻿@page "/"
+@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Início - Starfinder Shield</PageTitle>
+<link href="css/home.css" rel="stylesheet" />
+
+<div class="home-container">
+    <div class="home-header">
+        <h1 class="home-title">Starfinder Shield</h1>
+        <p class="home-subtitle">Ferramenta de Referência Rápida para Mestres e Jogadores</p>
+    </div>
+
+    <div class="cards-grid">
+        <!-- Card 1: Modificadores de Combate -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">⚔️</div>
+                <h3 class="card-title">Modificadores de Combate</h3>
+            </div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Situação</th>
+                            <th>Modificador</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cobertura Parcial</td>
+                            <td>+2 CA</td>
+                        </tr>
+                        <tr>
+                            <td>Cobertura Total</td>
+                            <td>+4 CA</td>
+                        </tr>
+                        <tr>
+                            <td>Vantagem Alta</td>
+                            <td>+1 Ataque</td>
+                        </tr>
+                        <tr>
+                            <td>Flanqueando</td>
+                            <td>+2 Ataque</td>
+                        </tr>
+                        <tr>
+                            <td>Caído</td>
+                            <td>-4 Ataque</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card 2: Ações em Combate -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">⏱️</div>
+                <h3 class="card-title">Ações em Combate</h3>
+            </div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Ação</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ataque Completo</td>
+                            <td>Ação Completa</td>
+                        </tr>
+                        <tr>
+                            <td>Ataque Padrão</td>
+                            <td>Ação Padrão</td>
+                        </tr>
+                        <tr>
+                            <td>Movimento</td>
+                            <td>Ação de Movimento</td>
+                        </tr>
+                        <tr>
+                            <td>Sacar Item</td>
+                            <td>Ação de Movimento</td>
+                        </tr>
+                        <tr>
+                            <td>Falar</td>
+                            <td>Ação Livre</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card 3: Dificuldade de Testes -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">🎲</div>
+                <h3 class="card-title">CD de Testes</h3>
+            </div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Dificuldade</th>
+                            <th>CD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Muito Fácil</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Fácil</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>Médio</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Difícil</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>Muito Difícil</td>
+                            <td>25+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card 4: Capacidade de Carga -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">🎒</div>
+                <h3 class="card-title">Capacidade de Carga</h3>
+            </div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Força</th>
+                            <th>Leve (L)</th>
+                            <th>Média (Bulk)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10</td>
+                            <td>5</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>6</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>7</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>8</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>9</td>
+                            <td>18</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card 5: Progressão de XP -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">⭐</div>
+                <h3 class="card-title">Progressão de Nível</h3>
+            </div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Nível</th>
+                            <th>XP Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>1.300</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>3.300</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>6.000</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>10.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card 6: Status Rápidos -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">💫</div>
+                <h3 class="card-title">Status Comuns</h3>
+            </div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Efeito Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Caído</td>
+                            <td>-4 ataque corpo-a-corpo</td>
+                        </tr>
+                        <tr>
+                            <td>Cego</td>
+                            <td>50% chance de erro</td>
+                        </tr>
+                        <tr>
+                            <td>Surdo</td>
+                            <td>-4 em Iniciativa</td>
+                        </tr>
+                        <tr>
+                            <td>Agarrado</td>
+                            <td>Imobilizado</td>
+                        </tr>
+                        <tr>
+                            <td>Invisível</td>
+                            <td>+20 Furtividade</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card 7: Bônus Básicos de Ataque e Dano -->
+        <div class="info-card card-wide">
+            <div class="card-header">
+                <div class="card-icon">🎯</div>
+                <h3 class="card-title">Bônus Básicos de Ataque e Dano</h3>
+            </div>
+            <div class="card-content">
+                <p class="card-description">
+                    Para fácil referência, a seguir são apresentadas as fórmulas básicas para calcular bônus e dano de ataques à distância e bônus e dano de ataques corpo a corpo.
+                </p>
+                <div class="formulas-grid">
+                    <div class="formula-section">
+                        <h4 class="formula-title">⚔️ Ataque Corpo a Corpo</h4>
+                        <div class="formula-box">
+                            <span class="formula-label">Bônus:</span>
+                            <span class="formula-text">Bônus Base + Mod. Força</span>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">Dano:</span>
+                            <span class="formula-text">Dano da Arma + Mod. Força</span>
+                        </div>
+                    </div>
+
+                    <div class="formula-section">
+                        <h4 class="formula-title">🏹 Ataque à Distância</h4>
+                        <div class="formula-box">
+                            <span class="formula-label">Bônus:</span>
+                            <span class="formula-text">Bônus Base + Mod. Destreza - Penalidade de Distância</span>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">Dano:</span>
+                            <span class="formula-text">Dano da Arma</span>
+                        </div>
+                    </div>
+
+                    <div class="formula-section">
+                        <h4 class="formula-title">🪃 Arma de Arremesso</h4>
+                        <div class="formula-box">
+                            <span class="formula-label">Bônus:</span>
+                            <span class="formula-text">Bônus Base + Mod. Força - Penalidade de Distância</span>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">Dano:</span>
+                            <span class="formula-text">Dano da Arma + Mod. Força</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="card-note">
+                    <i class="bi bi-info-circle"></i> Vários outros bônus de ataque e dano podem se aplicar por características de classe, talentos e circunstâncias especiais.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
