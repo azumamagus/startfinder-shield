@@ -1,0 +1,198 @@
+@page "/principios-combate"
+
+<PageTitle>Princípios do Combate - Starfinder Shield</PageTitle>
+<link href="css/principios-combate.css" rel="stylesheet" />
+
+<div class="principios-container">
+    <div class="principios-header">
+        <h1 class="principios-title">PRINCÍPIOS DO COMBATE</h1>
+        <p class="principios-subtitle">Fundamentos das Mecânicas de Combate</p>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="intro-section">
+            <p class="intro-text">
+                Esta seção apresenta os principais termos e cálculos necessários para arbitrar os elementos mais básicos do combate:
+                atacar e defender. Para uma segmentação completa de todas as ações que personagens podem realizar em combate, veja Ações
+                em Combate na página 244.
+            </p>
+        </div>
+
+        <!-- Seção: Quem Eu Posso Atacar? -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">🎯</span>
+                QUEM EU POSSO ATACAR?
+            </h2>
+            <div class="topic-content">
+                <p>
+                    O combate normalmente ocorre em um mapa de batalha com quadrados de 2,5 centímetros, cada um representando uma
+                    área de 1,5 metros de lado, com miniaturas representando personagens e monstros. A maioria dos personagens e muitos
+                    monstros ocupam um único quadrado de 1,5 metros, embora algumas criaturas maiores ocupem vários quadrados. O espaço
+                    que um personagem ocupa normalmente é referido como seu quadrado, embora os termos "espaço" e "quadrado" possam ser
+                    utilizados intercambiavelmente. Veja Tamanho e Espaço na página 255 para mais informações.
+                </p>
+                <p>
+                    Geralmente, você pode disparar uma arma à distância em um inimigo que enxerga no mapa de batalha, embora isto seja mais
+                    difícil quanto mais longe o inimigo estiver. Da mesma forma, você pode utilizar uma arma branca para atacar um inimigo em qual­
+                    quer quadrado que ameaçar, que são os quadrados adjacentes a seu espaço, incluindo diagonalmente, embora você possa ser capaz
+                    de atacar criaturas mais distantes se tiver alcance. Veja Alcance e Quadrados Ameaçados na página 255 para mais detalhes.
+                </p>
+            </div>
+        </div>
+
+        <!-- Seção: Jogada de Ataque -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">🎲</span>
+                JOGADA DE ATAQUE
+            </h2>
+            <div class="topic-content">
+                <p>
+                    Uma jogada de ataque representa sua tentativa de acertar seu oponente em corpo a corpo ou à distância em seu turno numa
+                    rodada. Quando realiza uma jogada de ataque, você rola um d20 e soma seu bônus de ataque (veja Ataques Corpo a Corpo
+                    e Ataques à Distância abaixo, bem como os quadros Bônus Básicos de Ataque e Dano na página 241). Também podem se
+                    aplicar vários outros bônus de características de classe, talentos e assim por diante. Se seu resultado igualar ou exceder a Classe
+                    de Armadura do alvo, você acerta e causa dano.
+                </p>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Ataques Corpo a Corpo</h3>
+                    <p>
+                        Quando realizar um ataque corpo a corpo, você utiliza uma arma branca para atingir um oponente em combate próximo.
+                        Seu bônus de ataque para um ataque corpo a corpo é igual a seu bônus base de ataque (determinado por sua classe e nível; veja
+                        Capítulo 4) + seu modificador de Força.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Ataques à Distância</h3>
+                    <p>
+                        Quando realizar um ataque à distância, você utiliza uma arma à distância para acertar um oponente à distância. Se estiver ata­
+                        cando com uma arma de arremesso, seu bônus de ataque à distância é igual a seu bônus base de ataque (determinado por sua
+                        classe e nível; veja Capítulo 4) + seu modificador de Força. Caso contrário, seu bônus de ataque à distância é igual a seu bônus
+                        base de ataque + seu modificador de Destreza.
+                    </p>
+                    <p>
+                        Quando realizar um ataque à distância, você também pode sofrer uma penalidade por disparar ou arremessar sua arma
+                        além da distância listada em seu alcance ideal (veja Distância e Penalidades na página 245).
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Erros e Acertos Automáticos</h3>
+                    <p>
+                        Um 1 natural (o d20 mostra um 1) em uma jogada de ataque é sempre um erro. Um 20 natural (o d20 mostra um 20) é sempre um
+                        acerto. Um 20 natural também é um possível acerto crítico, que poderia causar mais dano (veja Acertos Críticos na página 245).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção: Classe de Armadura -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">🛡️</span>
+                CLASSE DE ARMADURA (CA)
+            </h2>
+            <div class="topic-content">
+                <p>
+                    Sua Classe de Armadura (CA) representa o quão difícil é para oponentes atingirem um golpe sólido em você. Sua Classe de
+                    Armadura (CA) é o resultado mínimo na jogada de ataque que um oponente precisa para te acertar e causar dano. A Classe de
+                    Armadura é dividida em duas categorias: Classe de Armadura de Energia (CAE) e Classe de Armadura Cinética (CAC). Qualquer
+                    referência a Classe de Armadura, incluindo bônus e penalidades, se aplica à CAE e à CAC, exceto se especificado o contrário.
+                </p>
+                <p>
+                    Sua CAE e CAC são primariamente determinadas por seu bônus de armadura (frequentemente proveniente da armadura
+                    que você veste) mais seu modificador de Destreza. Calcule sua CAE e CAC utilizando a seguinte fórmula: 10 + o bônus de CAE
+                    ou CAC de sua armadura (o que for apropriado) + seu modificador de Destreza.
+                </p>
+                <p>
+                    A maioria das armaduras fornece bônus separados para CAE e CAC. Entretanto, as condições de algumas armaduras lhe im­
+                    pedem de utilizar seu bônus de Destreza total. Vários outros bônus também podem se aplicar por características de classe,
+                    talentos, circunstâncias especiais e assim por diante. Para mais informações sobre bônus, veja a página 266.
+                </p>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Classe de Armadura de Energia (CAE)</h3>
+                    <p>
+                        Sua Classe de Armadura de Energia (CAE) representa suas defe­sas contra ataques que causam dano somente como resultado
+                        de algum tipo de energia (tal como dano de ácido, eletricidade, fogo, frio ou sônico). Quando o ataque de um oponente for cau­
+                        sar somente dano de energia (se utilizando, por exemplo, uma pistola laser), o resultado da jogada de ataque é comparado
+                        à sua CAE para determinar se ele lhe acerta ou não. Algumas armas e efeitos que utilizam magia ou tipos de energia exóticos
+                        também podem mirar sua CAE; a descrição da arma ou efeito diz se este é o caso.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Classe de Armadura Cinética (CAC)</h3>
+                    <p>
+                        Sua Classe de Armadura Cinética (CAC) representa suas defesas contra ataques que causam dano primariamente como resultado
+                        de um impacto físico. Isto geralmente inclui ataques que causam dano concussante, cortante ou perfurante (normalmente descri­
+                        tos como "ataques cinéticos"), bem como impactos de queda e dano de esmagamento ou constrição. Quando o ataque de um
+                        adversário for causar tal dano (se utilizando, por exemplo, uma faca-estrela), mesmo que também fosse causar dano de energia,
+                        o resultado da jogada de ataque é comparado à sua CAC para determinar se ele lhe acerta ou não.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção: Dano -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">⚡</span>
+                DANO
+            </h2>
+            <div class="topic-content">
+                <p>
+                    Se seu ataque acertar, você causa dano. O dano reduz primeiro os Pontos de Estamina atuais do alvo e então seus Pontos de
+                    Vida (veja Ferimentos e Morte na página 250 para mais informações). Na maioria dos casos, o tipo de arma utilizado determina
+                    a quantidade de dano que você causa, embora especialização em grupos de armas similares (veja o talento Especialização em
+                    Armas na página 157) e outras habilidades possam aumentar essa quantidade. Algumas armas e habilidades podem acrescen­
+                    tar outros efeitos além de causar dano.
+                </p>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Modificador de Força</h3>
+                    <p>
+                        Quando acertar com uma arma branca ou de arremesso, some seu modificador de Força ao resultado de sua jogada de dano.
+                        Entretanto, não some seu modificador de Força ao dano de suas granadas e ataques à distância feitos com armas que não são
+                        de arremesso.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Multiplicando Dano</h3>
+                    <p>
+                        Algumas vezes você multiplica seu dano por algum fator, como em um acerto crítico (veja página 245). Neste caso, você não
+                        multiplica sua jogada de dano literalmente por este fator. Em vez disso, você rola o dano (somando todos os modificadores) a
+                        quantidade de vezes especificada e soma os resultados. Se multiplicar dano mais de uma vez, cada multiplicador se aplica ao dano
+                        original e não multiplicado. Portanto, dobrar dano duas vezes é equivalente a jogar o dano (somando todos os modificadores) três
+                        vezes – uma vez para o dano original e uma para cada duplicação.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Dano Mínimo</h3>
+                    <p>
+                        Se penalidades reduzirem o resultado de dano a menos de 1, um acerto ainda causa 1 de dano não-letal (veja Dano Não-letal na
+                        página 252).
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Dano de Atributo</h3>
+                    <p>
+                        Certas criaturas e efeitos mágicos podem causar dano tempo­rário ou permanente de atributo, que reduz um valor de atri­
+                        buto em particular e pode reduzir seu modificador, consequen­temente afetando várias estatísticas e rolagens. Veja Dano de
+                        Atributo, Penalidades de Atributo, Dreno de Atributo e Níveis Negativos na página 252 para mais informações.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-to-top-principios" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao topo">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+</div>
