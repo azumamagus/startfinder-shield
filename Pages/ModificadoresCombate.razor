@@ -1,0 +1,187 @@
+@page "/modificadores-combate"
+
+<PageTitle>Modificadores de Combate - Starfinder Shield</PageTitle>
+<link href="css/modificadores-combate.css" rel="stylesheet" />
+
+<div class="modificadores-container">
+    <div class="modificadores-header">
+        <h1 class="modificadores-title">MODIFICADORES DE COMBATE</h1>
+        <p class="modificadores-subtitle">Fatores que Influenciam Ataques e Defesas</p>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="intro-section">
+            <p class="intro-text">
+                Diversos fatores podem influenciar o combate ou conceder modificadores em jogadas de ataque e outras estatísticas.
+            </p>
+        </div>
+
+        <!-- Seção: Cobertura -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">🛡️</span>
+                COBERTURA
+            </h2>
+            <div class="topic-content">
+                <p>
+                    Cobertura não necessariamente bloqueia sentidos precisos, mas torna mais difícil para inimigos lhe acertarem. Para determinar
+                    se o alvo tem cobertura contra seu ataque, escolha uma quina de seu quadrado. Se qualquer linha desta quina para qualquer
+                    quina do quadrado do alvo passar através de um quadrado ou borda que bloqueia linha de efeito ou fornece cobertura, ou
+                    através de um quadrado ocupado por uma criatura, o alvo tem cobertura. Cobertura lhe concede +4 de bônus na CA e +2 de
+                    bônus em jogadas de Reflexos contra ataques que se originarem de um ponto do lado da cobertura diferente do seu. Note que
+                    efeitos de propagação podem se estender por quinas e anular estes bônus.
+                </p>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Cobertura e Ataques de Oportunidade</h3>
+                    <p>
+                        Se tiver cobertura em relação a um inimigo, ele não pode realizar um ataque de oportunidade contra você.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Obstáculos Baixos e Cobertura</h3>
+                    <p>
+                        Um obstáculo baixo (por exemplo, uma parede da metade de sua altura) fornece cobertura, mas somente contra criaturas a
+                        até 9 metros (seis quadrados). O atacante ignora a cobertura se estiver mais próximo da cobertura que seu alvo.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Cobertura Suave</h3>
+                    <p>
+                        Criaturas, mesmo inimigos, entre você e a fonte de um efeito fornecem cobertura contra ataques à distância, concedendo-lhe +4 de bônus na CA. Entretanto, cobertura suave não fornece bônus em jogadas de Reflexos, nem permite fazer um teste de Furtividade.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Cobertura Parcial</h3>
+                    <p>
+                        Se mais de metade de você estiver visível, seus bônus de cobertura são reduzidos para +2 na CA e +1 em jogadas de resistência
+                        de Reflexos.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Cobertura Aprimorada</h3>
+                    <p>
+                        Em alguns casos, como quando um alvo está escondido atrás de uma portícula de arma em um muro defensivo, a cobertura
+                        fornece bônus maiores na CA e jogadas de Reflexos. Em tais situações, os bônus normais na CA e jogadas de Reflexos são
+                        dobrados (para +8 e +4, respectivamente).
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Cobertura Total</h3>
+                    <p>
+                        Se um inimigo não tiver linha de efeito até você (veja página 272), você tem cobertura total contra esse inimigo. Uma criatura não
+                        pode realizar um ataque contra um alvo que tem cobertura total.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção: Flanqueado -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">⚔️</span>
+                FLANQUEADO
+            </h2>
+            <div class="topic-content">
+                <p>
+                    Quando realizar um ataque corpo a corpo, você recebe +2 de bônus em jogadas de ataque se seu oponente estiver ameaçado
+                    (veja página 255) por outra criatura em sua borda ou quina oposta. Somente uma criatura que ameaça o oponente concede este bônus,
+                    e seu bônus por flanquear nunca pode ser maior que +2. Criaturas com um alcance de 0 metros não podem flanquear um oponente.
+                </p>
+                <p>
+                    Quando estiver em dúvida se dois personagens que ameaçam um oponente estão o flanqueando, trace uma linha entre
+                    o centro dos dois atacantes. Se a linha passar através de bordas ou quinas opostas no espaço do oponente, o oponente está
+                    flanqueado.
+                </p>
+                <p>
+                    Exceção: Se uma criatura ocupar mais de um quadrado, ela recebe o bônus por flanquear se qualquer quadrado que ela ocupar for considerado para flanquear.
+                </p>
+            </div>
+        </div>
+
+        <!-- Seção: Ocultação -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">🌫️</span>
+                OCULTAÇÃO
+            </h2>
+            <div class="topic-content">
+                <p>
+                    Originada de fontes como fumaça densa e posição no campo de batalha, ocultação obscurece sentidos precisos e impõe uma chance
+                    de erro em ataques. Quando tiver ocultação, é difícil para inimigos lhe enxergarem claramente. Isto pode ser devido à sua posição no
+                    campo de batalha ou devido a outro efeito que torna mais difícil para inimigos lhe perceberem e acertarem com um ataque.
+                </p>
+                <p>
+                    Para determinar se você possui ocultação para o ataque à distância de uma criatura, escolha uma quina do quadrado do
+                    inimigo. Se qualquer linha desta quina para qualquer quina de seu quadrado passar através, ou pela borda, de um quadrado
+                    que concede ocultação, você tem ocultação. Também utilize estas regras quando uma criatura realizar um ataque corpo a
+                    corpo contra um alvo que não estiver adjacente a ela.
+                </p>
+                <p>
+                    Quando uma criatura realizar um ataque corpo a corpo contra um alvo adjacente, o alvo possui ocultação somente se seu espaço estiver inteiramente sob um efeito que concede ocultação.
+                </p>
+                <p>
+                    Adicionalmente, alguns efeitos concedem ocultação contra todos os ataques, independentemente se qualquer ocultação
+                    interveniente existir.
+                </p>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Chance de Erro de Ocultação</h3>
+                    <p>
+                        Ocultação concede ao alvo de um ataque bem-sucedido uma chance de que o atacante na verdade tenha errado. Isto é chamado de chance de erro. Normalmente, a chance de erro por ocultação é 20%. Faça o ataque normalmente; se a criatura atacante fosse acertar, o alvo deve rolar um 20 ou menos em um d% (veja página 513) para evitar ser atingido. Múltiplas condições
+                        de ocultação não se acumulam.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Graus Variantes de Ocultação</h3>
+                    <p>
+                        Certas situações podem fornecer mais ou menos chance de erro do que a ocultação típica. Neste caso, o MJ determina o grau de
+                        ocultação de um personagem.
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Ocultação Total</h3>
+                    <p>
+                        Se uma criatura tiver linha de efeito até você, mas não linha de visão (veja página 272), você tem ocultação total. Um inimigo
+                        não pode atacá-lo quando você tiver ocultação total, embora possa atacar um quadrado que ele imagine que você ocupa. Um
+                        ataque bem-sucedido em um quadrado ocupado por um inimigo com ocultação total tem chance de erro de 50% (em vez de 20%).
+                    </p>
+                </div>
+
+                <div class="subtopic">
+                    <h3 class="subtopic-title">Ignorando Ocultação</h3>
+                    <p>
+                        Ocultação pode ser ineficaz. Luz fraca ou escuridão não fornecem ocultação contra criaturas com visão no escuro. Criaturas
+                        com visão na penumbra podem enxergar sob luz fraca como se fosse luz normal.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção: Prostrado -->
+        <div class="topic-section">
+            <h2 class="topic-title">
+                <span class="topic-icon">🤕</span>
+                PROSTRADO
+            </h2>
+            <div class="topic-content">
+                <p>
+                    Se estiver deitado no chão, você está prostrado. Quando prostrado, você sofre –4 de penalidade em jogadas de ataque corpo a corpo.
+                    Você também recebe +4 de bônus em sua Classe de Armadura contra ataques à distância, mas sofre –4 de penalidade em sua CA
+                    contra ataques corpo a corpo. Se for derrubado em gravidade zero, você fica desestabilizado (veja página 274) em vez de prostrado.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-to-top-modificadores" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao topo">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+</div>
